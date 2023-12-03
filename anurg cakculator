@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        .calc {
+            width: 4vmax;
+            height: 8vmin;
+            margin: 5px;
+            border-radius: 50%;
+            color: white;
+            background-color: rgba(135, 133, 133, 0.648);
+            font-size: 20px;
+        }
+
+        .opr {
+            width: 4vmax;
+            height: 8vmin;
+            margin: 5px;
+            border-radius: 50%;
+            color: rgb(0, 0, 255);
+            background-color: rgb(171, 168, 168);
+            font-size: 20px;
+        }
+
+        #display {
+            width: 22vmax;
+            height: 10vmin;
+            margin-bottom: 3px;
+            border-radius: 15px;
+            border: 2px solid black;
+            font-size: larger;
+            color: white;
+        }
+
+        .container {
+            background-color: black;
+            margin-left: 35vmax;
+            margin-right: 35vmax;
+            padding-bottom: 20px;
+            border-radius: 5%;
+            width: 25vmax;
+            height: 75vmin;
+        }
+
+        .head {
+            padding-top: 20px;
+            color: rgb(250, 250, 250);
+        }
+    </style>
+</head>
+
+<body bgcolor="teal">
+    <div class="container">
+        <h1 class="head"><b>CALCULATOR</b></h1><hr><hr><hr><br>
+        <input type="text" id="display" disabled>
+        <div class="row"><br><br>
+            <button class="calc" onclick="addtodis('7')">7</button>
+            <button class="calc" onclick="addtodis('8')">8</button>
+            <button class="calc" onclick="addtodis('9')">9</button>
+            <button class="opr" onclick="addtodis('*')">*</button>
+        </div>
+        <div class="row">
+            <button class="calc" onclick="addtodis('6')">6</button>
+            <button class="calc" onclick="addtodis('5')">5</button>
+            <button class="calc" onclick="addtodis('4')">4</button>
+            <button class="opr" onclick="addtodis('+')">+</button>
+        </div>
+        <div class="row">
+            <button class="calc" onclick="addtodis('3')">3</button>
+            <button class="calc" onclick="addtodis('2')">2</button>
+            <button class="calc" onclick="addtodis('1')">1</button>
+            <button class="opr" onclick="addtodis('-')">-</button>
+        </div>
+        <div class="row">
+            <button class="opr" onclick="clr()">C</button>
+            <button class="calc" onclick="addtodis('0')">0</button>
+            <button class="opr" onclick="addtodis('/')">/</button>
+            <button class="opr" onclick="calculate()">=</button>
+        </div><hr><hr><hr>
+    </div>
+    <script>
+        let a = '';
+
+        function addtodis(n) {
+            a += n;
+            document.getElementById('display').value = a;
+        }
+
+        function clr() {
+            a = '';
+            document.getElementById('display').value = a;
+        }
+
+        function calculate() {
+            try {
+                const result = eval(a);
+                document.getElementById('display').value = result;
+                a = result.toString();
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+                a = '';
+            }
+        }
+
+    </script>
+</body>
+
+</html>
